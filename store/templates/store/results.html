@@ -1,0 +1,53 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<h6> Search Result - </h6>
+	<div  class="row">
+		{% for res in result %}
+
+			{% if res in result %}
+
+				<div class="col-lg-3 md-3 ">
+					<img class="thumbnail" src="{{res.imageURL}}">
+
+					<div class="box-element product shadow p-3 mb-5 bg-white rounded">
+						<h6><strong>{{res.name}}</strong></h6>
+						<hr>
+
+			        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ res}}" aria-expanded="false" aria-controls="collapseExample">View Details
+			        </button>
+			          
+			        <div class="collapse card card-body mt-3" id="{{ res }}" >
+			        
+			               <h6> Manufacture By -  {{res.company}} </h6>
+			               <h6> Product Description - {{res.detail}} </h6>
+			               <h6> Product M.R.P. - <strike>{{res.mrp}}</strike> </h6>
+			               <h6> Product Price - {{res.price}} </h6>
+
+			        </div>
+						<!--<a class="btn btn-sm btn-outline-success" href="#">View</a>
+						<h6 style="display: inline-block; float: right"><strong>Rs.{{res.price}}</strong></h6> -->
+					</div>
+				</div>
+
+			{% else %}
+
+				<h6> Nothing here </h6>
+
+			{% endif %}
+
+		{% endfor %}
+	</div>
+</body>
+</html>
+
+
+{% endblock content %}
